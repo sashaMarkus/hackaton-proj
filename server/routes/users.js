@@ -8,6 +8,12 @@ const router = express.Router();
 
 router.post('/signup', async (req, res, next) => {
   const { email, password, confirmPassword, firstName, lastName } = req.body;
+  if (password !== confirmPassword) {
+        res.status(403).send({
+          message: 'The passwords do not match. Please enter your password again, and make sure both entries are exactly the same',
+        });
+        return;
+      }
   bcrypt.hash(password, 10, async (err, hash) => {
     if (err) next(err);
     else {
@@ -18,7 +24,7 @@ router.post('/signup', async (req, res, next) => {
         });
         return;
       }
-      await addUser(email, hash, firstName, lastName, phoneNumber);
+      await addUser(email, hash, firstName, lastName);
       res.status(201).send({ user: { email } });
     }
   });
@@ -62,13 +68,12 @@ function isSameUser(req, res, next) {
 
 router.put('/:userId', auth, isSameUser, async (req, res, next) => {
   const { email, first_name, last_name } = req.body;
-  await updateUser(req.params.userId, email, first_name, last_name, updated);
+  await updateUser(req.params.userId, email, first_name, last_name;
   res.status(200).send({
     user: {
       email,
       first_name,
       last_name,
-      updated,
     },
     result: 'The user details have been updated succesfully',
   });
