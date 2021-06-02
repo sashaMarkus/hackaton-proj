@@ -6,8 +6,8 @@ export function Login() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  function handleLogin() {
-    axios.post("http://localhost:5050/user/login", {
+  async function handleLogin() {
+    await axios.post("http://localhost:5050/user/login", {
       email: email,
       password: password,
     });
@@ -19,9 +19,9 @@ export function Login() {
 
   return (
     <div className="d-flex flex-column">
-      <h2>Sign Up Here</h2>
+      <h2>Log In Here</h2>
       <form onSubmit={submit} className="form-group">
-        <label for="email">Email address:</label>
+        <label htmlFor="email">Email address:</label>
         <input
           className="form-control"
           name="Email"
@@ -30,7 +30,7 @@ export function Login() {
             setemail(event.target.value);
           }}
         />
-        <label for="password">New Password:</label>
+        <label htmlFor="password">New Password:</label>
         <input
           className="form-control"
           name="Password"

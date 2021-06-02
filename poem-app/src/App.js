@@ -6,16 +6,22 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { SignUp } from "./Components/SignUp";
 import { Login } from "./Components/Login";
+import { NavBar } from "./Components/NavBar";
+import { Home } from "./Components/Home";
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-dark.bg-gradient">
       <Router>
-        <Route path="/signup">
+        <NavBar />
+        <Route path="/validation">
           <SignUp />
-        </Route>
-        <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/login"></Route>
+        <Route exact path="/">
+          {" "}
+          <Home />{" "}
         </Route>
       </Router>
     </div>
