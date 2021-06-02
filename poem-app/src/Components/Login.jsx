@@ -1,13 +1,13 @@
-import React from "react";
-import axios from "axios";
-import { useState } from "react";
+import React from 'react';
+import axios from 'axios';
+import { useState } from 'react';
 
 export function Login() {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
 
   function handleLogin() {
-    axios.post("http://localhost:5050/user/login", {
+    axios.post('http://localhost:5050/user/login', {
       email: email,
       password: password,
     });
