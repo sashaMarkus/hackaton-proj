@@ -1,0 +1,8 @@
+{
+  "name": "hackaton-proj",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sashaMarkus/hackaton-proj.git",
+  "author": "Elisha Avior <elisha.avior@gmail.com>",
+  "license": "MIT"
+}
