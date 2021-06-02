@@ -20,3 +20,5 @@ mongoose.connect("mongodb+srv://admin:admin123@cluster0.o6ypj.mongodb.net/myFirs
      app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
  })
  .catch((err) => console.log(err));
+
+ mongoose.set('useFindAndModify', false);

@@ -26,7 +26,7 @@ router.post('/signup', async (req, res, next) => {
         return;
       }
       await addUser(email, hash, firstName, lastName);
-      res.status(201).send({ user: { email } });
+      res.status(201).send({ user: { email, name: `${firstName} ${lastName}` } });
     }
   });
 });
