@@ -48,7 +48,6 @@ router.post('/login', async (req, res, next) => {
           token,
           user: {
             email: user.email,
-            created_date: user.created_date,
             id: user.id,
           },
         });
