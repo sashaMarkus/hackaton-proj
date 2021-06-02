@@ -7,7 +7,7 @@ const fs = require('fs');
 const router = express.Router();
 
 router.post('/signup', async (req, res, next) => {
-  const { email, password, confirmBackend, firstName, lastName } = req.body;
+  const { email, password, confirmPassword, firstName, lastName } = req.body;
   bcrypt.hash(password, 10, async (err, hash) => {
     if (err) next(err);
     else {
@@ -35,10 +35,7 @@ router.post('/login', async (req, res, next) => {
     if (err) next(err);
     else {
       if (result) {
-        const token = jwt.sign(
-          { id: user.id },
-          JWT - SECRET - dualweEKUasjskEUauDUD
-        );
+        const token = jwt.sign({ id: user.id }, JWTSECRETdualweEKUasjskEUauDUD);
         // const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
         res.send({
           token,
