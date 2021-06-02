@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 export function SignUp() {
+  const history = useHistory();
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
@@ -10,13 +12,18 @@ export function SignUp() {
   const [lastName, setLastName] = useState("");
 
   async function handleSignUp() {
-    await axios.post("http://localhost:5050/user/signup", {
+    const signup = await axios.post("http://localhost:5050/user/signup", {
       firstName: firstName,
       lastName: lastName,
       email: emailReg,
       password: passwordReg,
       confirmPassword: passwordConf,
     });
+    if (signup.data) {
+      history.push("/poem");
+    } else {
+      return;
+    }
   }
 
   function submit(e) {
