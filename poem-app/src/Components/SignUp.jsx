@@ -9,8 +9,8 @@ export function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  function handleSignUp() {
-    axios.post("http://localhost:5050/user/signup", {
+  async function handleSignUp() {
+    await axios.post("http://localhost:5050/user/signup", {
       firstName: firstName,
       lastName: lastName,
       email: emailReg,
@@ -27,7 +27,7 @@ export function SignUp() {
     <div className="d-flex flex-column">
       <h2>Sign Up Here</h2>
       <form onSubmit={submit} className="form-group">
-        <label for="first-name">First Name:</label>
+        <label htmlFor="first-name">First Name:</label>
         <input
           className="form-control"
           name="First-Name"
@@ -36,7 +36,7 @@ export function SignUp() {
             setFirstName(event.target.value);
           }}
         />
-        <label for="last-name">Last Name:</label>
+        <label htmlFor="last-name">Last Name:</label>
         <input
           className="form-control"
           name="Last-Name"
@@ -45,7 +45,7 @@ export function SignUp() {
             setLastName(event.target.value);
           }}
         />
-        <label for="email">Email address:</label>
+        <label htmlFor="email">Email address:</label>
         <input
           className="form-control"
           name="Email"
@@ -54,7 +54,7 @@ export function SignUp() {
             setEmailReg(event.target.value);
           }}
         />
-        <label for="password">New Password:</label>
+        <label htmlFor="password">New Password:</label>
         <input
           className="form-control"
           name="Password"
@@ -64,7 +64,7 @@ export function SignUp() {
             setPasswordReg(event.target.value);
           }}
         />
-        <label for="password-conf">Password Confirmation:</label>
+        <label htmlFor="password-conf">Password Confirmation:</label>
         <input
           className="form-control"
           name="Password-Conf"
