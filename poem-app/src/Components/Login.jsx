@@ -1,33 +1,20 @@
-<<<<<<< HEAD
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+import { useHistory } from 'react-router';
 
 export function Login() {
+  const history = useHistory();
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
 
   async function handleLogin() {
-    await axios.post('http://localhost:5050/user/login', {
-=======
-import React from "react";
-import axios from "axios";
-import { useState } from "react";
-import { useHistory } from "react-router";
-
-export function Login() {
-  const history = useHistory();
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
-
-  async function handleLogin() {
-    const login = await axios.post("http://localhost:5050/user/login", {
->>>>>>> b462972a6b329c277a9eb9f5798fe56fcd2f2dc4
+    const login = await axios.post('http://localhost:5050/user/login', {
       email: email,
       password: password,
     });
     if (login.data) {
-      history.push("/poem");
+      history.push('/poem');
     }
   }
 
