@@ -7,14 +7,16 @@ const validateBody = require('../middlewares/validation');
 const router = express.Router();
 
 // 3
-const NewPetValidationSchema = S.object()
+const NewPoemValidationSchema = S.object()
+  .prop('string', S.string().minLength(1).required())
+  .prop('string', S.string().minLength(1).required())
   .prop('string', S.string().minLength(1).required())
   .valueOf();
 
 router.post(
   '/',
   auth,
-  // validateBody(NewPetValidationSchema), //
+  validateBody(NewPoemValidationSchema), //
   async (req, res, next) => {
     const { personality, inputString, addToDatabase } = req.body;
     try {
