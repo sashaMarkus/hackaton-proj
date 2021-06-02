@@ -38,18 +38,18 @@ router.post('/login', async (req, res, next) => {
     res.status(404).send('User not found with this email');
     return;
   }
-  bcrypt.compare(password, user.password_hash, (err, result) => {
+  bcrypt.compare(password, user.password, (err, result) => {
     if (err) next(err);
     else {
       if (result) {
-        const token = jwt.sign({ id: user.id }, JWTSECRETdualweEKUasjskEUauDUD);
+        const token = jwt.sign({ id: user.id }, "JWTSECRETdualweEKUasjskEUauDUD");
         // const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
         res.send({
           token,
           user: {
             email: user.email,
-            created_date: user.created_date,
-            id: user.id,
+            name: user.name,
+            id: user._id,
           },
         });
       } else {
