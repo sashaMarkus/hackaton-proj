@@ -17,7 +17,6 @@ export function SignUp() {
       password: passwordReg,
       passwordConf: passwordConf,
     });
-    console.log(firstName);
   }
 
   function submit(e) {
