@@ -14,23 +14,24 @@ router.post('/signup', async (req, res, next) => {
         'The passwords do not match. Please enter your password again, and make sure both entries are exactly the same',
     });
     return;
-  }
-  bcrypt.hash(password, 10, async (err, hash) => {
-    if (err) next(err);
-    else {
-      const user = await getUserByEmail(email);
-      if (user) {
-        res.status(403).send({
-          message: 'There is already a user account with this email address',
-        });
-        return;
+  } else {
+    bcrypt.hash(password, 10, async (err, hash) => {
+      if (err) next(err);
+      else {
+        const user = await getUserByEmail(email);
+        if (user) {
+          res.status(403).send({
+            message: 'There is already a user account with this email address',
+          });
+          return;
+        }
+        await addUser(email, hash, firstName, lastName);
+        res
+          .status(201)
+          .send({ user: { email, name: `${firstName} ${lastName}` } });
       }
-      await addUser(email, hash, firstName, lastName);
-      res
-        .status(201)
-        .send({ user: { email, name: `${firstName} ${lastName}` } });
-    }
-  });
+    });
+  }
 });
 
 router.post('/login', async (req, res, next) => {
