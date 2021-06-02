@@ -11,6 +11,10 @@ export function NavBar() {
         {" "}
         Profile
       </a>
+      <a className="navbar-brand mb-0 h1" href="/poem">
+        {" "}
+        Create Poem
+      </a>
       <a className="navbar-brand mb-0 h1" href="/validation">
         {" "}
         Login/Signup
