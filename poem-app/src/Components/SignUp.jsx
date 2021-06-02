@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from 'react-router';
 
 export function SignUp() {
+  const history = useHistory();
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
@@ -17,6 +19,7 @@ export function SignUp() {
       password: passwordReg,
       confirmPassword: passwordConf,
     });
+    history.push('/');
   }
 
   function submit(e) {
