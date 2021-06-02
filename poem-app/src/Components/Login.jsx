@@ -7,7 +7,6 @@ export function Login() {
   const [password, setpassword] = useState('');
 
   async function handleLogin() {
-    console.log(email, password);
     await axios.post('http://localhost:5050/user/login', {
       email: email,
       password: password,
