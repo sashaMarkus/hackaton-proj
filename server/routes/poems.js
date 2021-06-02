@@ -8,14 +8,14 @@ const router = express.Router();
 
 // 3
 const NewPoemValidationSchema = S.object()
-  .prop('string', S.string().minLength(1).required())
-  .prop('string', S.string().minLength(1).required())
-  .prop('string', S.string().minLength(1).required())
+  .prop('personality', S.string().minLength(1).maxLength(20).required())
+  .prop('inputString', S.string().minLength(1).maxLength(30).required())
+  .prop('addToDatabase', S.boolean())
   .valueOf();
 
 router.post(
   '/',
-  auth,
+  // auth,
   validateBody(NewPoemValidationSchema), //
   async (req, res, next) => {
     const { personality, inputString, addToDatabase } = req.body;
