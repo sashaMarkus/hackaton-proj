@@ -1,5 +1,13 @@
-function addUser(email, passwordHash) {
+const user = require("../models/user");
+
+async function addUser(email, passwordHash, firstName, lastName) {
   // connection to MongoDB
+  const userObj = await user.create({
+    email,
+    password: passwordHash,
+    name: `${firstName} ${lastName}`,
+  })
+
 }
 exports.addUser = addUser;
 

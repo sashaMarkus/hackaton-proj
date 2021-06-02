@@ -26,7 +26,9 @@ router.post('/signup', async (req, res, next) => {
         return;
       }
       await addUser(email, hash, firstName, lastName);
-      res.status(201).send({ user: { email } });
+      res
+        .status(201)
+        .send({ user: { email, name: `${firstName} ${lastName}` } });
     }
   });
 });
@@ -42,13 +44,17 @@ router.post('/login', async (req, res, next) => {
     if (err) next(err);
     else {
       if (result) {
-        const token = jwt.sign({ id: user.id }, JWTSECRETdualweEKUasjskEUauDUD);
+        const token = jwt.sign(
+          { id: user.id },
+          'JWTSECRETdualweEKUasjskEUauDUD'
+        );
         // const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
         res.send({
           token,
           user: {
             email: user.email,
             id: user.id,
+            name: user.name,
           },
         });
       } else {
