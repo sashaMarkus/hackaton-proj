@@ -68,6 +68,7 @@ function isSameUser(req, res, next) {
 }
 
 router.put('/:userId', auth, isSameUser, async (req, res, next) => {
+  // add password
   const { email, first_name, last_name } = req.body;
   await updateUser(req.params.userId, email, first_name, last_name);
   res.status(200).send({
