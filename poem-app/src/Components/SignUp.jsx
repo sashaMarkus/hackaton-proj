@@ -24,7 +24,7 @@ export function SignUp() {
   }
 
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column validation">
       <h2>Sign Up Here</h2>
       <form onSubmit={submit} className="form-group">
         <label htmlFor="first-name">First Name:</label>

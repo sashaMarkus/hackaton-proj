@@ -1,3 +1,15 @@
+* {
+  font-family: "MedievalSharp", cursive;
+}
+.body {
+  background-image: linear-gradient(to right, #be722b9d, #3a2a1c9d);
+  height: 910px;
+  width: 100%;
+}
+.validation {
+  background-image: linear-gradient(to right, #be722b9d, #3a2a1c9d);
+  height: 455px;
+}
 .App {
   text-align: center;
 }
@@ -48,11 +60,17 @@
 
 .wrapper {
   background: url("https://wallpaperaccess.com/full/1302751.jpg");
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 1600px;
-  height: 500px;
-  position: relative;
-  right: 100px;
+  text-align: center;
+  color: #282c34;
 }
+.container {
+  color: #282c34;
+  position: relative;
+  bottom: 40px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
