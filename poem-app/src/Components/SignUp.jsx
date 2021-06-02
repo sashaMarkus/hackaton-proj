@@ -15,7 +15,7 @@ export function SignUp() {
       lastName: lastName,
       email: emailReg,
       password: passwordReg,
-      passwordConf: passwordConf,
+      confirmPassword: passwordConf,
     });
   }
 
