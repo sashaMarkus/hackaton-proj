@@ -1,10 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const { addUser, getUserByEmail, updateUserPictureUrl } = require('../data/users');
+const { addUser, getUserByEmail, updateUser } = require('../data/users');
 const jwt = require('jsonwebtoken');
-const { upload } = require('../middlewares/multipart');
 const { auth } = require('../middlewares/auth');
-const { uploadToCloudinary } = require('../lib/cloudinary');
 const fs = require('fs');
 const router = express.Router();
 
@@ -17,7 +15,7 @@ router.post('/', async (req, res, next) => {
       await addUser(email, hash);
       res.send({ user: { email } });
     }
-  })
+  });
 });
 
 // add request body validation
@@ -32,14 +30,18 @@ router.post('/login', async (req, res, next) => {
     if (err) next(err);
     else {
       if (result) {
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+        const token = jwt.sign(
+          { id: user.id },
+          JWT - SECRET - dualweEKUasjskEUauDUD
+        );
+        // const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
         res.send({
           token,
           user: {
             email: user.email,
             created_date: user.created_date,
-            id: user.id
-          }
+            id: user.id,
+          },
         });
       } else {
         res.status(401).send('Incorrect password');
@@ -56,15 +58,31 @@ function isSameUser(req, res, next) {
   next();
 }
 
-router.put('/:userId/picture_url',
-  auth,
-  isSameUser,
-  upload.single('image'),
-  async (req, res) => {
-    const result = await uploadToCloudinary(req.file.path);
-    await updateUserPictureUrl(req.params.userId, result.secure_url);
-    fs.unlinkSync(req.file.path);
-    res.send({ pictureUrl: result.secure_url });
+router.put('/:userId', auth, isSameUser, async (req, res, next) => {
+  const { bio, email, first_name, last_name, phone_number, role, updated } =
+    req.body;
+  await updateUser(
+    req.params.userId,
+    bio,
+    email,
+    first_name,
+    last_name,
+    phone_number,
+    role,
+    updated
+  );
+  res.status(200).send({
+    user: {
+      bio,
+      email,
+      first_name,
+      last_name,
+      phone_number,
+      role,
+      updated,
+    },
+    result: 'The user details have been updated succesfully',
   });
+});
 
 module.exports = router;
