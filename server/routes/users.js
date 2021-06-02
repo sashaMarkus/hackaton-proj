@@ -64,26 +64,13 @@ function isSameUser(req, res, next) {
 }
 
 router.put('/:userId', auth, isSameUser, async (req, res, next) => {
-  const { bio, email, first_name, last_name, phone_number, role, updated } =
-    req.body;
-  await updateUser(
-    req.params.userId,
-    bio,
-    email,
-    first_name,
-    last_name,
-    phone_number,
-    role,
-    updated
-  );
+  const { email, first_name, last_name } = req.body;
+  await updateUser(req.params.userId, email, first_name, last_name, updated);
   res.status(200).send({
     user: {
-      bio,
       email,
       first_name,
       last_name,
-      phone_number,
-      role,
       updated,
     },
     result: 'The user details have been updated succesfully',
