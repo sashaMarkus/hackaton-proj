@@ -36,6 +36,7 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
+  console.log(req.body);
   const user = await getUserByEmail(email);
   if (!user) {
     res.status(404).send('User not found with this email');
@@ -50,6 +51,7 @@ router.post('/login', async (req, res, next) => {
           'JWTSECRETdualweEKUasjskEUauDUD'
         );
         // const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+        console.log('succcess');
         res.send({
           token,
           user: {
@@ -60,6 +62,7 @@ router.post('/login', async (req, res, next) => {
         });
       } else {
         res.status(401).send('Incorrect password');
+        console.log('incorrect pw');
       }
     }
   });

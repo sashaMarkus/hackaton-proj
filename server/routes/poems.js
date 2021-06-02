@@ -1,5 +1,5 @@
 const express = require('express');
-const { getPoem } = require('../data/poems');
+const { createPoem } = require('../data/poems');
 const { auth } = require('../middlewares/auth');
 const fs = require('fs');
 const S = require('fluent-json-schema').default;
@@ -15,7 +15,7 @@ const NewPoemValidationSchema = S.object()
 
 router.post(
   '/',
-  // auth,
+  auth,
   validateBody(NewPoemValidationSchema), //
   async (req, res, next) => {
     const { personality, inputString, addToDatabase } = req.body;
