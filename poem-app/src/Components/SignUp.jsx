@@ -12,14 +12,18 @@ export function SignUp() {
   const [lastName, setLastName] = useState("");
 
   async function handleSignUp() {
-    await axios.post("http://localhost:5050/user/signup", {
+    const signup = await axios.post("http://localhost:5050/user/signup", {
       firstName: firstName,
       lastName: lastName,
       email: emailReg,
       password: passwordReg,
       confirmPassword: passwordConf,
     });
-    history.push('/');
+    if (signup.data) {
+      history.push("/poem");
+    } else {
+      return;
+    }
   }
 
   function submit(e) {

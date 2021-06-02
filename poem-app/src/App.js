@@ -6,6 +6,7 @@ import { SignUp } from "./Components/SignUp";
 import { Login } from "./Components/Login";
 import { NavBar } from "./Components/NavBar";
 import { Home } from "./Components/Home";
+import { CreatePoem } from "./Components/CreatePoem";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         <Route exact path="/">
           {" "}
           <Home />{" "}
+        </Route>
+        <Route path="/poem">
+          <CreatePoem />
         </Route>
       </Router>
     </div>
