@@ -1,13 +1,13 @@
-import React from 'react';
-import axios from 'axios';
-import { useState } from 'react';
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
 
 export function Login() {
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('');
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
   async function handleLogin() {
-    await axios.post('http://localhost:5050/user/login', {
+    await axios.post("http://localhost:5050/user/login", {
       email: email,
       password: password,
     });
@@ -18,7 +18,7 @@ export function Login() {
   }
 
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column validation">
       <h2>Log In Here</h2>
       <form onSubmit={submit} className="form-group">
         <label htmlFor="email">Email address:</label>
