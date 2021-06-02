@@ -6,19 +6,24 @@ const { auth } = require('../middlewares/auth');
 const fs = require('fs');
 const router = express.Router();
 
-// add request body validation
-router.post('/', async (req, res, next) => {
-  const { email, password } = req.body;
+router.post('/signup', async (req, res, next) => {
+  const { email, password, confirmBackend, firstName, lastName } = req.body;
   bcrypt.hash(password, 10, async (err, hash) => {
     if (err) next(err);
     else {
-      await addUser(email, hash);
-      res.send({ user: { email } });
+      const user = await getUserByEmail(email);
+      if (user) {
+        res.status(403).send({
+          message: 'There is already a user account with this email address',
+        });
+        return;
+      }
+      await addUser(email, hash, firstName, lastName, phoneNumber);
+      res.status(201).send({ user: { email } });
     }
   });
 });
 
-// add request body validation
 router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
   const user = await getUserByEmail(email);
