@@ -93,7 +93,41 @@ function createPoem(personality, inputString, addToDatabase) {
         "When I don't get nothing back",
       ];
       break;
-    case 'Name':
+    case 'Eminem':
+      exportArray = [
+        "And I don't know if no one knows, he's cold hap, put it",
+        'You know the amars around',
+        'I say the hate of my art',
+        "You kicked me when I was down, but what you say, just Don't hurt me",
+        'I say the day I talk a don',
+        "I can't get down the same, cause cook",
+        'I never meant to make you cry, but tonight',
+        "And you think I'm gonna buy this shit thought what happed the for, I can't do this women",
+        "I'm cleanin' out my closet, one more time I said, I'm sorry, I don't fuck with fairies",
+        "And I don't give a two shit you at it so",
+        'This is the only this gun, I boke so lost touch my body',
+        "I got a help on everything you oway like I ain't got nothing to say no more",
+        "So won't the real Slim Shady, please stand up,",
+        "I don't know why I'm still shitty much you neep mean got you become",
+        "Then I'm have to gleather my trues to double sluck a bitch and start wobbline that muck they moma",
+        'You can stun if you want and your ass will get rolled on',
+        "I don't know why I'm still since without me",
+        "I wouldn't give the bitch a syil all in the door I'm a dill me",
+        "But they mean ain't gonna be some pands",
+        "I think I'm leady",
+        "I ain't never seen an  ass like that",
+        "So they can be it free, start to get to the club or the corne and I'm about",
+        'I can be ralium shit',
+        "I think you've never hit me and smear if you?",
+        'The stress screaming I say, I dunno what do',
+        'The morning rain closes, this monster',
+        'I want to dig my way to hell',
+        "I tear the club up fo' sho",
+        "I love you lyrin' at the same road It's doint",
+        "I think you've never look bores once of your goes and Good It's a father",
+      ];
+      break;
+    case 'Leonardo Cohen':
       exportArray = [];
       break;
     default:
