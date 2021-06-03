@@ -1,30 +1,40 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-
 export function CreatePoem() {
   const [textInput, setTextInput] = useState("");
   const [singer, setSinger] = useState("");
+  const [poemSelf, setPoemSelf] = useState([]);
 
   function getSinger(e) {
-  e.preventDefault();
-  setSinger(e.target.value);
-}
-  const handleSubmit = async (e) => {
     e.preventDefault();
-    const singerAndText = await axios.post("http://localhost:5050/poem", {
+    setSinger(e.target.value);
+  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const response = await axios.post("http://localhost:5050/poem", {
       inputString: textInput,
-      personality: singer
-    })
-    console.log(singerAndText);
+      personality: singer,
+    });
+
+    let finalResult = "";
+    for (let i = 0; i < response.data.length; i++) {
+      finalResult += `${response.data[i]}\n`;
+    }
+    setPoemSelf(finalResult);
+    return finalResult;
   };
-    
+
   return (
     <div className="d-flex flex-column body">
       <h2>Create a poem</h2>
       <form className="form-group">
         <p>Insert your words here</p>
-        <input onChange={ (e) => setTextInput(e.target.value) } className="form-control" placeholder="Feel poetic yet?" />
+        <input
+          onChange={(event) => setTextInput(event.target.value)}
+          className="form-control"
+          placeholder="Feel poetic yet?"
+        />
         <h2>Select artist</h2>
         <p>Move the mouse over the button to open the dropdown menu.</p>
 
@@ -44,6 +54,13 @@ export function CreatePoem() {
           Create Poem
         </button>
       </form>
+      <div id="poem" className="card text-white bg-secondary mb-3">
+        <div className="card-header">Created by: at:</div>
+        <div class="card-body">
+          <h5 class="card-title">Poem</h5>
+          <p class="card-text">{poemSelf}</p>
+        </div>
+      </div>
     </div>
   );
 }
