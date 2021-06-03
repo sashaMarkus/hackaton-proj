@@ -128,7 +128,38 @@ function createPoem(personality, inputString, addToDatabase) {
       ];
       break;
     case 'Leonardo Cohen':
-      exportArray = [];
+      exportArray = [
+        'I will help you if I can When it all comes down to dust',
+        'The holy or the broken Hallelujah Hallelujah',
+        'The holy books are open wide',
+        "And she lets the river answer that you've always been her lover And you want to travel with her, ",
+        'I have tried in my way to be free Like a worm on a hook',
+        "There's a bar where the boys have stopped talking",
+        "I don't know which",
+        "I said won't you let me see",
+        'And the desert far away:',
+        "I want to get there last It's not because I'm old",
+        "There ain't no cure for love",
+        'I want the kind of work I had before,',
+        'I was nine years old',
+        'There is a crack, a crack in everything there is a crack in everything',
+        'And I know from your smile',
+        'There is a crack, a crack in everything there is a crack in everything',
+        'I will speak no more',
+        'I said is this contagious?',
+        'I said is this contagious?',
+        'And I know what I must do',
+        "And it's once for the devil and once for Christ",
+        'And you were waiting',
+        "And you know that she's halfcrazy but that's why you want to be there",
+        "There's a bar where the boys have stopped talking",
+        "That you are down but you're ok",
+        'I want a spirit that is calm. Yes and lover, lover, lover, lover, lover, lover, lover come back t',
+        "I don't know which",
+        "There's a bar where the boys have stopped talking",
+        'The fragrance of those promises',
+        "I want to get there last It's not because I'm old",
+      ];
       break;
     default:
       exportArray = ['Something went wrong...'];
