@@ -1,9 +1,9 @@
 * {
   font-family: "MedievalSharp", cursive;
 }
-.body {
+body {
   background-image: linear-gradient(to right, #be722b9d, #3a2a1c9d);
-  height: 910px;
+  height: 100%;
   width: 100%;
 }
 .validation {
