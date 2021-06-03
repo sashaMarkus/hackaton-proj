@@ -1,20 +1,20 @@
-import React from "react";
-import axios from "axios";
-import { useState } from "react";
-import { useHistory } from "react-router";
+import React from 'react';
+import axios from 'axios';
+import { useState } from 'react';
+import { useHistory } from 'react-router';
 
 export function Login() {
   const history = useHistory();
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
 
   async function handleLogin() {
-    const login = await axios.post("http://localhost:5050/user/login", {
+    const login = await axios.post('http://localhost:5050/user/login', {
       email: email,
       password: password,
     });
     if (login.data) {
-      history.push("/poem");
+      history.push('/poem');
     }
   }
 

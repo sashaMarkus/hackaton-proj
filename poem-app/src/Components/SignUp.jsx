@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router";
+import { useHistory } from 'react-router';
 
 export function SignUp() {
   const history = useHistory();
