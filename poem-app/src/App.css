@@ -1,9 +1,9 @@
 * {
   font-family: "MedievalSharp", cursive;
 }
-.body {
+body {
   background-image: linear-gradient(to right, #be722b9d, #3a2a1c9d);
-  height: 910px;
+  height: 100%;
   width: 100%;
 }
 .validation {
@@ -116,6 +116,10 @@
 }
 
 .dropdown:hover .dropdown-content {
+  width: 300px !important;
+  height: 200px !important;
+  display: flex !important;
+  flex-direction: column !important;
   display: block;
 }
 
@@ -127,7 +131,6 @@
   position: relative;
 }
 #poem {
-  height: 355px;
   width: 850px;
   position: relative;
   top: 120px;
