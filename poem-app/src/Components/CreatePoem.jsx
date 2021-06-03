@@ -47,6 +47,15 @@ export function CreatePoem() {
             <button value="Eminem" onClick={getSinger} className="btn">
               Eminem
             </button>
+            <button value="The Beatles" onClick={getSinger} className="btn">
+              The Beatles
+            </button>
+            <button value="Amy Winehouse" onClick={getSinger} className="btn">
+              Amy Winehouse
+            </button>
+            <button value="Adele" onClick={getSinger} className="btn">
+              Adele
+            </button>
           </div>
         </div>
         <h3>Artist Selected: {singer}</h3>
