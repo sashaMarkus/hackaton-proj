@@ -3,7 +3,12 @@ import axios from "axios";
 
 export function CreatePoem() {
   const [textInput, setTextInput] = useState("");
+  const [singer, setSinger] = useState("");
 
+  function getSinger(e) {
+  e.preventDefault();
+  setSinger(e.target.value);
+}
   const handleSubmit = async (e) => {
     e.preventDefault();
     const singerAndText = await axios.post("http://localhost:5050/poem", {
@@ -12,19 +17,29 @@ export function CreatePoem() {
     })
     console.log(singerAndText);
   };
-
+    
   return (
     <div className="d-flex flex-column body">
       <h2>Create a poem</h2>
-      <form onSubmit={handleSubmit} className="form-group">
+      <form className="form-group">
         <p>Insert your words here</p>
-        <input
-          className="form-control"
-          placeholder="Feel poetic yet?"
-          value={textInput}
-          onChange={(e) => setTextInput(e.target.value)}
-        />
-        <button type="submit" className="btn btn-dark">
+        <input className="form-control" placeholder="Feel poetic yet?" />
+        <h2>Select artist</h2>
+        <p>Move the mouse over the button to open the dropdown menu.</p>
+
+        <div className="dropdown">
+          <button className="dropbtn">Dropdown</button>
+          <div className="dropdown-content">
+            <button value="Leonard Cohen" onClick={getSinger} className="btn">
+              Leonard Cohen
+            </button>
+            <button value="Eminem" onClick={getSinger} className="btn">
+              Eminem
+            </button>
+          </div>
+        </div>
+        <h3>Artist Selected: {singer}</h3>
+        <button id="poem-btn" className="btn btn-dark">
           Create Poem
         </button>
       </form>
