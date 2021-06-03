@@ -65,9 +65,9 @@ export function CreatePoem() {
       </form>
       <div id="poem" className="card text-white bg-secondary mb-3">
         <div className="card-header">Created by: at:</div>
-        <div class="card-body">
-          <h5 class="card-title">Poem</h5>
-          <p class="card-text">{poemSelf}</p>
+        <div className="card-body">
+          <h5 className="card-title">Poem</h5>
+          <p className="card-text">{poemSelf}</p>
         </div>
       </div>
     </div>
