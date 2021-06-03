@@ -41,6 +41,7 @@ export function CreatePoem() {
     for (let i = 0; i < response.data.length; i++) {
       finalResult += `${response.data[i]}\n`;
     }
+    console.log(finalResult);
     setPoemSelf(finalResult);
     return finalResult;
   };
@@ -97,7 +98,11 @@ export function CreatePoem() {
         <div className="card-header">Created by: at:</div>
         <div className="card-body">
           <h5 className="card-title">Poem</h5>
-          <p className="card-text">{poemSelf}</p>
+          <p
+            className="card-text h-auto"
+            style={{ whiteSpace: 'pre', height: '15rem' }}>
+            {poemSelf}
+          </p>
         </div>
       </div>
     </div>
