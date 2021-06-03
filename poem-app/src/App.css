@@ -116,6 +116,10 @@
 }
 
 .dropdown:hover .dropdown-content {
+  width: 300px !important;
+  height: 200px !important;
+  display: flex !important;
+  flex-direction: column !important;
   display: block;
 }
 
