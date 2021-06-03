@@ -1,23 +1,43 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 export function CreatePoem() {
-  const [textInput, setTextInput] = useState("");
-  const [singer, setSinger] = useState("");
+  const [textInput, setTextInput] = useState('');
+  const [singer, setSinger] = useState('');
+  const [singerUrl, setSingerUrl] = useState('');
   const [poemSelf, setPoemSelf] = useState([]);
 
   function getSinger(e) {
     e.preventDefault();
     setSinger(e.target.value);
+    switch (e.target.value) {
+      case 'The Beatles':
+        setSingerUrl('../singers/beatles.jpg');
+        break;
+      case 'Amy Winehouse':
+        setSingerUrl('../singers/amy-winehouse.jpg');
+        break;
+      case 'Adele':
+        setSingerUrl('../singers/adele.jpg');
+        break;
+      case 'Eminem':
+        setSingerUrl('../singers/eminem.jpg');
+        break;
+      case 'Leonardo Cohen':
+        setSingerUrl('../singers/leonardo-cohen.jpg');
+        break;
+      default:
+        setSingerUrl('');
+    }
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.post("http://localhost:5050/poem", {
+    const response = await axios.post('http://localhost:5050/poem', {
       inputString: textInput,
       personality: singer,
     });
 
-    let finalResult = "";
+    let finalResult = '';
     for (let i = 0; i < response.data.length; i++) {
       finalResult += `${response.data[i]}\n`;
     }
@@ -41,8 +61,8 @@ export function CreatePoem() {
         <div className="dropdown">
           <button className="dropbtn">Dropdown</button>
           <div className="dropdown-content">
-            <button value="Leonard Cohen" onClick={getSinger} className="btn">
-              Leonard Cohen
+            <button value="Leonardo Cohen" onClick={getSinger} className="btn">
+              Leonardo Cohen
             </button>
             <button value="Eminem" onClick={getSinger} className="btn">
               Eminem
@@ -59,6 +79,16 @@ export function CreatePoem() {
           </div>
         </div>
         <h3>Artist Selected: {singer}</h3>
+        {singerUrl !== '' && (
+          <div>
+            <img
+              src={singerUrl}
+              alt={singer}
+              className="img-fluid"
+              style={{ width: '200px', objectFit: 'contain' }}
+            />
+          </div>
+        )}
         <button onClick={handleSubmit} id="poem-btn" className="btn btn-dark">
           Create Poem
         </button>
